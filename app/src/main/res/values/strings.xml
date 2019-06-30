@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="text_photo">Photos</string>
+    <string name="text_quanlity_photo">500</string>
+    <string name="text_follow_main">Followers</string>
+    <string name="text_quanlity_follow">1234</string>
+    <string name="text_following_main">Following</string>
+    <string name="text_quanlity_following_main">6789</string>
+    <string name="text_email_main">aoeminh@gnail.com</string>
+    <string name="text_phone_numbeer_main">+84362615880</string>
+    <string name="text_add_group_main">Add to group</string>
+    <string name="text_all_comment_main">Show all comments</string>
+    <string name="text_btn_follow_main">Follow me</string>
 </resources>
