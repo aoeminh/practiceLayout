@@ -5,16 +5,20 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".activity.MainActivity"
+        android:theme="@style/NoActionBar">
 
     <android.support.design.widget.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-
             android:layout_marginBottom="8dp"
+            app:itemBackground="@color/white_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/item_bottom_navi"
+            app:itemTextColor="@color/icon_navi_bottom_color"
+            app:itemIconTint="@color/item_navi_bottom_selector"
+
             />
 
 </android.support.constraint.ConstraintLayout>
