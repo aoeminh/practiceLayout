@@ -12,4 +12,7 @@ class MessageFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.fragment_message,container,false)
         return view
     }
+
+
+
 }
