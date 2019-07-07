@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.fragment.MessageFragment
+import com.example.myapplication.fragment.NotificationFragment
+import com.example.myapplication.fragment.TimelineFragment
 import com.example.myapplication.fragment.TopFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,8 +21,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.item_top -> {
                     loadFragment(TopFragment.newInstance())
                 }
+                R.id.item_message -> loadFragment(MessageFragment.newInstance())
+                R.id.item_noti-> loadFragment(NotificationFragment.newInstance())
+                R.id.item_timeline -> loadFragment(TimelineFragment.newInstance())
+
             }
-            return@setOnNavigationItemSelectedListener false
+            return@setOnNavigationItemSelectedListener true
         }
     }
 
@@ -27,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(R.id.frame_main,fragment)
-        transaction.addToBackStack(null)
         transaction.commit()
     }
 }
