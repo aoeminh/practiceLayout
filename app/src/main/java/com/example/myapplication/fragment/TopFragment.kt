@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.activity.MainActivity
-import com.example.myapplication.adapter.ListType
 import com.example.myapplication.adapter.ListUserAdapter
 import com.example.myapplication.model.User
 import kotlinx.android.synthetic.main.fragment_top.*
@@ -18,8 +17,13 @@ class TopFragment : BaseFragment() {
     var text: String? = null
     var mainActivity: MainActivity? = null
     var listAdapter: ListUserAdapter? = null
-    lateinit var listUser: MutableList<User>
+    var listUser: MutableList<User> = arrayListOf()
+    var typeList: Int = 1
+
     companion object {
+        val TYPE_LIST = 1
+        val TYPE_GRID = 2
+
         fun newInstance(): Fragment {
             var fragment = TopFragment()
             val bundle = Bundle()
@@ -51,15 +55,22 @@ class TopFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dumpData()
-        listAdapter = ListUserAdapter(context,listUser,ListType.LINNEAR)
+        listAdapter = ListUserAdapter(context, listUser, TYPE_LIST)
         rv_top_fragment.apply {
-            layoutManager = LinearLayoutManager(mainActivity,LinearLayoutManager.VERTICAL,false)
-            adapter =listAdapter
+            layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = listAdapter
 
         }
+
+        img_change_recyclerview_type.setOnClickListener {
+            typeList++
+            if (typeList > 2) typeList = 1
+            listAdapter?.setType(typeList)
+        }
+
     }
 
-    fun dumpData(){
+    fun dumpData() {
         listUser.add(User("Peter"))
         listUser.add(User("John"))
         listUser.add(User("David"))

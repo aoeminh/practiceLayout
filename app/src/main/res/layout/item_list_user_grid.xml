@@ -7,5 +7,6 @@
 <ImageView
         android:id="@+id/img_ava_grid"
         android:layout_width="200dp"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:src="@drawable/ava_user"/>
 </RelativeLayout>

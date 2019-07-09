@@ -14,6 +14,7 @@
                 android:id="@+id/img_ava_item_list_top"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
+                android:src="@drawable/ava_user"
                 />
         <TextView
                 android:id="@+id/tv_name_item_list_top"
