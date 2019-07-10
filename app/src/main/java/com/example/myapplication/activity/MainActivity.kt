@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initBottomMenu();
+    }
+
+    fun initBottomMenu(){
+        bot_navi_main.selectedItemId = R.id.item_top
+        loadFragment(TopFragment.newInstance())
         bot_navi_main.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.item_top -> {

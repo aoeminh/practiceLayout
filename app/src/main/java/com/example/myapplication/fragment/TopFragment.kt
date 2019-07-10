@@ -2,6 +2,7 @@ package com.example.myapplication.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -65,9 +66,19 @@ class TopFragment : BaseFragment() {
         img_change_recyclerview_type.setOnClickListener {
             typeList++
             if (typeList > 2) typeList = 1
+            if (typeList == 1) {
+                rv_top_fragment.apply {
+                    layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
+                }
+            } else if (typeList == 2) {
+                rv_top_fragment.apply {
+                    layoutManager = GridLayoutManager(mainActivity, 3)
+                }
+            }
             listAdapter?.setType(typeList)
-        }
 
+
+        }
     }
 
     fun dumpData() {
