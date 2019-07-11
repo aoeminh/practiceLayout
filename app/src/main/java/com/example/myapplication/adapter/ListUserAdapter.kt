@@ -43,7 +43,7 @@ class ListUserAdapter(var context: Context?, var listUser: MutableList<User>, va
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         if (viewHolder is LinnearViewHolder) {
             var lnViewHolder = viewHolder
-            lnViewHolder.itemView.tv_name_item_list_top?.text = listUser[position].name
+//            lnViewHolder.itemView.tv_name_item_list_top?.text = listUser[position].name
         } else if (viewHolder is GridViewHolder) {
             var gridViewHolder = viewHolder as GridViewHolder
         }
@@ -51,7 +51,7 @@ class ListUserAdapter(var context: Context?, var listUser: MutableList<User>, va
     }
 
     override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
+        return this.listType
     }
 
     fun setType(type: Int){
