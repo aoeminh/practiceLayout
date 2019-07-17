@@ -1,30 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.MainActivity"
-        android:theme="@style/NoActionBar">
+        tools:context=".activity.MainActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+                android:id="@+id/tool_bar_main"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:title="Toolbar"
+                >
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
             android:id="@+id/frame_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bot_navi_main"
-            android:background="#f0f0"></FrameLayout>
+            android:background="#f0f0"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
 
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/bot_navi_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_gravity="bottom"
             app:itemBackground="@color/white_color"
             app:menu="@menu/item_bottom_navi"
+            android:background="#FFF"
             app:itemTextColor="@color/icon_navi_bottom_color"
             app:itemIconTint="@color/item_navi_bottom_selector"
-            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
-</RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

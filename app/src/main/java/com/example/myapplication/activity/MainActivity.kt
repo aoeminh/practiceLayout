@@ -2,8 +2,11 @@ package com.example.myapplication.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
+import android.widget.RelativeLayout
 import com.example.myapplication.R
+import com.example.myapplication.behavior.BottomNavigationBehavior
 import com.example.myapplication.fragment.MessageFragment
 import com.example.myapplication.fragment.NotificationFragment
 import com.example.myapplication.fragment.TimelineFragment
@@ -15,13 +18,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initBottomMenu();
     }
 
     fun initBottomMenu(){
         bot_navi_main.selectedItemId = R.id.item_top
         loadFragment(TopFragment.newInstance())
+        val layoutParamBotNavigation =  bot_navi_main.layoutParams as CoordinatorLayout.LayoutParams
+        layoutParamBotNavigation.behavior = BottomNavigationBehavior()
         bot_navi_main.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId){
                 R.id.item_top -> {
