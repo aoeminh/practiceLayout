@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import com.example.myapplication.R
 import com.example.myapplication.activity.MainActivity
 import com.example.myapplication.adapter.ListUserAdapter
 import com.example.myapplication.model.User
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_top.*
 
 class TopFragment : BaseFragment() {
@@ -56,13 +59,7 @@ class TopFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dumpData()
-        listAdapter = ListUserAdapter(context, listUser, TYPE_LIST)
-        rv_top_fragment.apply {
-            layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
-            adapter = listAdapter
-
-        }
-
+        initRecylcerView()
         img_change_recyclerview_type.setOnClickListener {
             typeList++
             if (typeList > 2) typeList = 1
@@ -79,6 +76,35 @@ class TopFragment : BaseFragment() {
 
 
         }
+    }
+
+    fun initRecylcerView() {
+        listAdapter = ListUserAdapter(context, listUser, TYPE_LIST)
+        rv_top_fragment.apply {
+            layoutManager = LinearLayoutManager(mainActivity, LinearLayoutManager.VERTICAL, false)
+            adapter = listAdapter
+
+        }
+
+        rv_top_fragment.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
+                if (dy > 0 ) {
+                    mainActivity?.hideFab()
+                }
+
+                if (dy < 0) {
+                    mainActivity?.showFab()
+                }
+                Log.w("MinhNQ", " " + dy)
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+
     }
 
     fun dumpData() {

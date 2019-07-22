@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
+import android.view.View
 import android.widget.RelativeLayout
 import com.example.myapplication.R
 import com.example.myapplication.behavior.BottomNavigationBehavior
@@ -30,13 +31,39 @@ class MainActivity : AppCompatActivity() {
             when(menuItem.itemId){
                 R.id.item_top -> {
                     loadFragment(TopFragment.newInstance())
+                    showFab()
                 }
-                R.id.item_message -> loadFragment(MessageFragment.newInstance())
-                R.id.item_noti-> loadFragment(NotificationFragment.newInstance())
-                R.id.item_timeline -> loadFragment(TimelineFragment.newInstance())
+                R.id.item_message -> {
+                    hideFab()
+                    loadFragment(MessageFragment.newInstance())
+                }
+                R.id.item_noti->{
+                    hideFab()
+                    loadFragment(NotificationFragment.newInstance())
+                }
+                R.id.item_timeline ->{
+                    hideFab()
+                    loadFragment(TimelineFragment.newInstance())
+                }
 
             }
             return@setOnNavigationItemSelectedListener true
+        }
+
+
+    }
+
+    fun hideFab(){
+        if(fab.visibility == View.VISIBLE){
+            fab?.hide()
+        }
+
+    }
+
+    fun showFab(){
+        if(fab.visibility == View.INVISIBLE || fab.visibility == View.GONE){
+            fab?.show()
+
         }
     }
 

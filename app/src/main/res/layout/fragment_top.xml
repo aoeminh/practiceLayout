@@ -4,26 +4,34 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <ImageView
-            android:id="@+id/img_change_recyclerview_type"
-            android:layout_width="53dp"
-            android:layout_height="@dimen/_30sdp"
-            android:src="@drawable/ic_view_list_24dp"
-            />
-
-
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_top_fragment"
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/img_change_recyclerview_type"
-            >
+           >
+        <ImageView
+                android:id="@+id/img_change_recyclerview_type"
+                android:layout_width="53dp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_view_list_24dp"
+                />
 
-    </android.support.v7.widget.RecyclerView>
 
-    <
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_top_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/img_change_recyclerview_type"
+
+                >
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+
 
 
 

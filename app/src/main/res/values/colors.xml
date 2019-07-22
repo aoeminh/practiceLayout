@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="icon_navi_bottom_color">#501CFF</color>
     <color name="white_color">#FFFFFF</color>
+    <color name="main_color">#501CFF</color>
 </resources>
