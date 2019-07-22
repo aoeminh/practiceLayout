@@ -59,4 +59,6 @@
             android:layout_marginBottom="80dp"
             android:backgroundTint="#FFF"/>
 
+    <include layout="@layout/layout_fab"/>
+
 </android.support.design.widget.CoordinatorLayout>
