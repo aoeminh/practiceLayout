@@ -1,11 +1,11 @@
 package com.example.myapplication.activity
 
-import android.support.v7.app.AppCompatActivity
+import android.animation.Animator
 import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.RelativeLayout
 import com.example.myapplication.behavior.BottomNavigationBehavior
 import com.example.myapplication.fragment.MessageFragment
 import com.example.myapplication.fragment.NotificationFragment
@@ -13,9 +13,6 @@ import com.example.myapplication.fragment.TimelineFragment
 import com.example.myapplication.fragment.TopFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_fab.*
-import android.animation.Animator
-import android.R
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,13 +35,13 @@ class MainActivity : AppCompatActivity() {
 //        fabBGLayout.setOnClickListener { closeFABMenu() }
     }
 
-    fun initBottomMenu(){
+    fun initBottomMenu() {
         bot_navi_main.selectedItemId = com.example.myapplication.R.id.item_top
         loadFragment(TopFragment.newInstance())
-        val layoutParamBotNavigation =  bot_navi_main.layoutParams as CoordinatorLayout.LayoutParams
+        val layoutParamBotNavigation = bot_navi_main.layoutParams as CoordinatorLayout.LayoutParams
         layoutParamBotNavigation.behavior = BottomNavigationBehavior()
         bot_navi_main.setOnNavigationItemSelectedListener { menuItem ->
-            when(menuItem.itemId){
+            when (menuItem.itemId) {
                 com.example.myapplication.R.id.item_top -> {
                     loadFragment(TopFragment.newInstance())
                     showFab()
@@ -53,11 +50,11 @@ class MainActivity : AppCompatActivity() {
                     hideFab()
                     loadFragment(MessageFragment.newInstance())
                 }
-                com.example.myapplication.R.id.item_noti->{
+                com.example.myapplication.R.id.item_noti -> {
                     hideFab()
                     loadFragment(NotificationFragment.newInstance())
                 }
-                com.example.myapplication.R.id.item_timeline ->{
+                com.example.myapplication.R.id.item_timeline -> {
                     hideFab()
                     loadFragment(TimelineFragment.newInstance())
                 }
@@ -81,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         fabLayout3.visibility = View.VISIBLE
     }
 
-     fun closeFABMenu() {
+    fun closeFABMenu() {
         isFABOpen = false
         fab.animate().rotation(0f)
         fabLayout1.animate().translationY(0f)
@@ -118,25 +115,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun hideFab(){
-        if(fab.visibility == View.VISIBLE){
+    fun hideFab() {
+        if (fab.visibility == View.VISIBLE) {
             fab?.hide()
             closeFABMenu()
         }
 
     }
 
-    fun showFab(){
-        if(fab.visibility == View.INVISIBLE || fab.visibility == View.GONE){
+    fun showFab() {
+        if (fab.visibility == View.INVISIBLE || fab.visibility == View.GONE) {
             fab?.show()
 
         }
     }
 
-    fun loadFragment(fragment: Fragment){
+    fun loadFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(com.example.myapplication.R.id.frame_main,fragment)
+        transaction.replace(com.example.myapplication.R.id.frame_main, fragment)
         transaction.commit()
     }
 }
