@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fabBGLayout.setOnClickListener { closeFABMenu() }
+//        fabBGLayout.setOnClickListener { closeFABMenu() }
     }
 
     fun initBottomMenu(){
@@ -71,19 +71,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFABMenu() {
         isFABOpen = true
-        fabLayout1.visibility = View.VISIBLE
-        fabLayout2.visibility = View.VISIBLE
-        fabLayout3.visibility = View.VISIBLE
-        fabBGLayout.setVisibility(View.VISIBLE)
-        fab.animate().rotationBy(180F)
+
+        fab.animate().rotationBy(45F)
         fabLayout1.animate().translationY(-resources.getDimension(com.example.myapplication.R.dimen.standard_55))
         fabLayout2.animate().translationY(-resources.getDimension(com.example.myapplication.R.dimen.standard_100))
         fabLayout3.animate().translationY(-resources.getDimension(com.example.myapplication.R.dimen.standard_145))
+        fabLayout1.visibility = View.VISIBLE
+        fabLayout2.visibility = View.VISIBLE
+        fabLayout3.visibility = View.VISIBLE
     }
 
-    private fun closeFABMenu() {
+     fun closeFABMenu() {
         isFABOpen = false
-        fabBGLayout.setVisibility(View.GONE)
         fab.animate().rotation(0f)
         fabLayout1.animate().translationY(0f)
         fabLayout2.animate().translationY(0f)
@@ -99,9 +98,6 @@ class MainActivity : AppCompatActivity() {
                     fabLayout2.visibility = View.GONE
                     fabLayout3.visibility = View.GONE
                 }
-                /*                if (fab.getRotation() != -180) {
-                    fab.setRotation(-180);
-                }*/
             }
 
             override fun onAnimationCancel(animator: Animator) {
@@ -125,6 +121,7 @@ class MainActivity : AppCompatActivity() {
     fun hideFab(){
         if(fab.visibility == View.VISIBLE){
             fab?.hide()
+            closeFABMenu()
         }
 
     }
